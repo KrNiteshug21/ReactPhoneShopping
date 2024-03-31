@@ -1,13 +1,19 @@
 import "../index.css";
 import DataContext from "../Context/DataContext";
 import { useContext, useState } from "react";
+import { motion } from "framer-motion";
 
 const FilterPrice = () => {
   const { handlePriceFilter, removePriceFilter } = useContext(DataContext);
   const [selectedRadio, setSelectedRadio] = useState("");
 
   return (
-    <section className="filterPriceContainer">
+    <motion.section
+      className="filterPriceContainer"
+      // initial={{ x: "-40vw", opacity: 0 }}
+      // animate={{ x: 0, opacity: 1 }}
+      // transition={{ ease: "easeOut" }}
+    >
       <div className="filterPriceHeading">
         <h1>Price</h1>
         <button
@@ -48,7 +54,7 @@ const FilterPrice = () => {
           <label htmlFor="highToLow">High to Low</label>
         </div>
       </form>
-    </section>
+    </motion.section>
   );
 };
 

@@ -6,7 +6,7 @@
 
 :root {
   --max-width: calc(100% - 5rem);
-  --border-clr: #ececec;
+  --border-clr: rgb(237, 237, 237);
 
   --primary-clr-dark: #353b41;
   --primary-clr-purple: #603fef;
@@ -31,6 +31,7 @@ button {
   background-color: var(--primary-clr-dark);
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .header {
@@ -38,7 +39,7 @@ button {
   justify-content: space-between;
   align-items: center;
   color: aliceblue;
-  height: 5rem;
+  height: 3rem;
 }
 
 .header a {
@@ -55,13 +56,16 @@ button {
 
 .footerContainer {
   background-color: var(--primary-clr-dark);
+  /* width: 100%;
+  position: fixed;
+  bottom: 0; */
 }
 
 .footer {
   display: grid;
   place-content: center;
   color: aliceblue;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .contentContainer {
@@ -152,11 +156,6 @@ button {
   padding: 1rem;
 }
 
-/* .phone img {
-  mix-blend-mode: multiply;
-  filter: contrast(1);
-} */
-
 .phone a {
   color: #333;
   text-decoration: none;
@@ -187,7 +186,9 @@ button {
 }
 
 .cartPageContainer {
+  overflow-x: hidden;
   padding: 1rem 0;
+  margin-block: 1.25rem;
 }
 
 .cartHeader {

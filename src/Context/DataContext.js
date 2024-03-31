@@ -24,20 +24,17 @@ export const DataProvider = ({ children }) => {
     }
   }, [cartItems]);
 
-  const handlePriceFilter = useCallback(
-    (id) => {
-      var newPhones = phones.slice(0, phones.length);
-      if (id === "lowToHigh") {
-        newPhones = phones.sort((a, b) => a.price - b.price);
-        setPhones(newPhones);
-      } else {
-        newPhones = phones.sort((a, b) => b.price - a.price);
-        setPhones(newPhones);
-      }
-      console.log(phones);
-    },
-    [phones]
-  );
+  const handlePriceFilter = (id) => {
+    let newPhones = [...phones];
+    if (id === "lowToHigh") {
+      newPhones.sort((a, b) => a.price - b.price);
+      setPhones(newPhones);
+    } else {
+      newPhones.sort((a, b) => b.price - a.price);
+      setPhones(newPhones);
+    }
+    console.log(phones);
+  };
 
   const removePriceFilter = useCallback(() => {
     const newPhones = [...data];

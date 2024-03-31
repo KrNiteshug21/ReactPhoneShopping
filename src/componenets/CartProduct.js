@@ -1,12 +1,19 @@
 import { RiDeleteBinLine } from "react-icons/ri";
 import DataContext from "../Context/DataContext";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 const CartProduct = ({ cartItem }) => {
   const { handleDeleteCart } = useContext(DataContext);
 
   return (
-    <div className="cartProduct">
+    <motion.div
+      className="cartProduct"
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100vw" }}
+      transition={{ ease: "easeInOut", delay: 0.5, duration: 0.5 }}
+    >
       <div className="cartProductImage">
         <img src={cartItem.images[0]} alt={cartItem.title} />
       </div>
@@ -25,7 +32,7 @@ const CartProduct = ({ cartItem }) => {
           <RiDeleteBinLine size={36} />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

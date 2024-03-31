@@ -3,12 +3,19 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import CartItem from "./CartItem";
 import DataContext from "../Context/DataContext";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 const CartPage = () => {
   const { cartItems, totalCartPrice } = useContext(DataContext);
 
   return (
-    <div className="cartPageContainer">
+    <motion.div
+      className="cartPageContainer"
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      // exit={{ x: "-100vw" }}
+      transition={{ ease: "easeInOut", duration: 0.5 }}
+    >
       <main className="cartPage setWidth">
         <div className="cartHeader">
           <AiOutlineShoppingCart size={40} />
@@ -27,7 +34,7 @@ const CartPage = () => {
           </p>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,12 +1,18 @@
 import "../index.css";
 import DataContext from "../Context/DataContext";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 const SearchFilter = () => {
   const { search, setSearch } = useContext(DataContext);
 
   return (
-    <section className="searchFilter">
+    <motion.section
+      className="searchFilter"
+      // initial={{ x: "-40vw", opacity: 0 }}
+      // animate={{ x: 0, opacity: 1 }}
+      // transition={{ ease: "easeOut" }}
+    >
       <form className="searchForm">
         <h2>Search</h2>
         <input
@@ -16,7 +22,7 @@ const SearchFilter = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
-    </section>
+    </motion.section>
   );
 };
 
