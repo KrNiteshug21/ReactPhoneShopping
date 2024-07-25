@@ -3,11 +3,16 @@ import { useParams } from "react-router-dom";
 import DataContext from "../Context/DataContext";
 import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { GoDot, GoDotFill } from "react-icons/go";
 
 const PhoneDetails = () => {
   const { phones, handleAddCart } = useContext(DataContext);
   const { id } = useParams();
   const [phone, setPhone] = useState();
+  const [currentImage, setCurrentImage] = useState(0);
+  const handleCurrImage = (index) => {
+    setCurrentImage(index);
+  };
 
   useEffect(() => {
     const phone = phones.find((phone) => phone?.id.toString() === id);
@@ -24,7 +29,23 @@ const PhoneDetails = () => {
     >
       <div className="phoneDetailsContainer">
         <section className="phoneDetailsImage">
-          <img src={phone?.images[0]} alt={phone?.title} />
+          <div className="carousel">
+            <img src={phone?.images[currentImage]} alt="carousel" />
+            <div className="carouselDots">
+              {phone?.images.map((image, index) => {
+                return (
+                  <span onMouseEnter={() => handleCurrImage(index)} key={index}>
+                    {" "}
+                    {currentImage === index ? (
+                      <GoDotFill size={32} />
+                    ) : (
+                      <GoDot size={32} />
+                    )}{" "}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
           <div className="addToCartBtn" onClick={() => handleAddCart(phone)}>
             <FaShoppingCart size={30} />
             <h2>ADD TO CART</h2>

@@ -244,6 +244,17 @@ button {
   padding: 2.25rem 0;
 }
 
+.carouselDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.carouselDots span {
+  cursor: pointer;
+}
+
 .phoneDescription {
   flex-grow: 1;
   padding: 1rem;
