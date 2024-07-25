@@ -11,15 +11,27 @@ const CartPage = () => {
   return (
     <motion.div
       className="cartPageContainer"
-      initial={{ x: "100vw" }}
-      animate={{ x: 0 }}
-      // exit={{ x: "-100vw" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.5 }}
     >
       <main className="cartPage setWidth">
         <div className="cartHeader">
-          <AiOutlineShoppingCart size={40} />
-          <h3>Shipping Cart</h3>
+          <AiOutlineShoppingCart size={30} />
+          <h2>
+            {"Shopping Cart".split("").map((text, i) => {
+              return (
+                <motion.span
+                  key={i}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  {text}
+                </motion.span>
+              );
+            })}
+          </h2>
         </div>
         {cartItems.length > 0 ? (
           <CartItem cartItems={cartItems} />

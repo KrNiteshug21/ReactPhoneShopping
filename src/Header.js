@@ -12,21 +12,24 @@ const Header = () => {
     <AnimatePresence>
       <motion.div
         className="headerContainer"
-        initial={{ y: "-10vh" }}
-        animate={{ y: 0 }}
-        exit={{ x: "-100vw" }}
-        transition={{ ease: "easeInOut", duration: 0.5 }}
+        // initial={{ y: "-10vh" }}
+        // animate={{ y: 0 }}
+        // exit={{ x: "-100vw" }}
+        // transition={{ ease: "easeInOut", duration: 0.5 }}
       >
         <header className="header setWidth">
           <Link to="/">
             <div className="heading">
-              <h2>ECommerce</h2>
+              <h2>PhoneShop</h2>
             </div>
           </Link>
           <Link to="/cart">
             <div className="cartContainer">
               <AiOutlineShoppingCart size={28} />
-              <h2>Cart {cartItems.length ? `(${cartItems.length})` : ""}</h2>
+              <h2>Cart </h2>
+              {cartItems.length > 0 && (
+                <span className="cartCountPopup">{cartItems.length}</span>
+              )}
             </div>
           </Link>
         </header>

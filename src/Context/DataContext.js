@@ -21,6 +21,8 @@ export const DataProvider = ({ children }) => {
       const newTotalCartPrice = prices.reduce((acc, curr) => acc + curr);
       setTotalCartPrice(newTotalCartPrice);
       console.log(newTotalCartPrice);
+    } else {
+      setTotalCartPrice(0);
     }
   }, [cartItems]);
 
@@ -65,6 +67,7 @@ export const DataProvider = ({ children }) => {
     },
     [cartItems]
   );
+
   return (
     <DataContext.Provider
       value={{

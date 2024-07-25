@@ -1,6 +1,5 @@
 import { FaShoppingCart } from "react-icons/fa";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DataContext from "../Context/DataContext";
 import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -9,34 +8,27 @@ const PhoneDetails = () => {
   const { phones, handleAddCart } = useContext(DataContext);
   const { id } = useParams();
   const [phone, setPhone] = useState();
+
   useEffect(() => {
     const phone = phones.find((phone) => phone?.id.toString() === id);
     setPhone(phone);
   }, [phone, id, phones]);
 
-  const [phoneId, setPhoneId] = useState(Number(id));
-  const handleForward = () => {
-    phoneId === phones.length - 1
-      ? setPhoneId(0)
-      : setPhoneId((prev) => prev + 1);
-  };
-  const handleBackward = () => {
-    phoneId === 0
-      ? setPhoneId(phones.length - 1)
-      : setPhoneId((prev) => prev - 1);
-  };
-
   return (
     <motion.main
       className="phoneDetailsPage setWidth"
-      initial={{ x: "100vw" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100vw" }}
-      transition={{ ease: "easeInOut", duration: 0.5 }}
+      // initial={{ x: "50vw", opacity: 0 }}
+      // animate={{ x: 0, opacity: 1 }}
+      // exit={{ x: "-50vw", opacity: 0 }}
+      // transition={{ ease: "easeInOut", duration: 0.5 }}
     >
       <div className="phoneDetailsContainer">
         <section className="phoneDetailsImage">
           <img src={phone?.images[0]} alt={phone?.title} />
+          <div className="addToCartBtn" onClick={() => handleAddCart(phone)}>
+            <FaShoppingCart size={30} />
+            <h2>ADD TO CART</h2>
+          </div>
         </section>
         <section className="phoneDescription">
           <div className="phoneTitle">
@@ -78,26 +70,8 @@ const PhoneDetails = () => {
             <p>{phone?.battery}</p>
             <hr className="hrLine"></hr>
           </div>
-          <div className="addToCartBtn" onClick={() => handleAddCart(phone)}>
-            <FaShoppingCart size={30} />
-            <h2>ADD TO CART</h2>
-          </div>
         </section>
       </div>
-      <section className="navigation">
-        <button className="navigationBtn" onClick={handleBackward}>
-          <Link to={`/${phoneId}`}>
-            <FiArrowLeft size={32} />
-            <h2>Previous</h2>
-          </Link>
-        </button>
-        <button className="navigationBtn" onClick={handleForward}>
-          <Link to={`/${phoneId}`}>
-            <h2>Next</h2>
-            <FiArrowRight size={32} />
-          </Link>
-        </button>
-      </section>
     </motion.main>
   );
 };

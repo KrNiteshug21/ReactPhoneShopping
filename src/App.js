@@ -19,7 +19,7 @@ function App() {
           <Routes location={location} key={location.key}>
             <Route path="/" element={<Content />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/:id" element={<PhoneDetails />} />
+            <Route path="/product/:id" element={<PhoneDetails />} />
           </Routes>
         </AnimatePresence>
         <Footer />
