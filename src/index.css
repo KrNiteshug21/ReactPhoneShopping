@@ -17,6 +17,21 @@ body {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-clr-dark);
+  border-radius: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--border-clr);
+  background-blend-mode: multiply;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
   height: 20px;
@@ -266,6 +281,21 @@ button {
   overflow-y: scroll;
 }
 
+.phoneDescription::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.phoneDescription::-webkit-scrollbar-thumb {
+  background-color: var(--primary-clr-dark);
+  border-radius: 0.25rem;
+}
+
+.phoneDescription::-webkit-scrollbar-track {
+  background-color: var(--border-clr);
+  background-blend-mode: multiply;
+}
+
 .phoneTitle {
   font-size: 20px;
 }
@@ -310,13 +340,6 @@ button {
   padding: 0.25rem 2rem;
   border: none;
   border-radius: 5px;
-}
-
-.navigationBtn:hover .left {
-  transform: translateX(-0.5rem);
-}
-.navigationBtn:hover .right {
-  transform: translateX(0.5rem);
 }
 
 .navigationBtn a {
