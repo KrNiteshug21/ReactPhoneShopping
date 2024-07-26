@@ -15,6 +15,7 @@
 
 body {
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 body::-webkit-scrollbar {
@@ -218,10 +219,15 @@ button {
   border-radius: 10px;
 }
 
+.cartBtn:hover {
+  background-color: #0056b3;
+}
+
 .cartPageContainer {
   overflow-x: hidden;
   padding: 1rem 0;
   margin-block: 1.25rem;
+  min-height: 81vh;
 }
 
 .cartHeader {
@@ -368,6 +374,23 @@ button {
   align-items: center;
   gap: 1rem;
   padding-inline: 2rem;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 650px) {
+  .cartProduct {
+    padding-inline: 1rem;
+    display: grid;
+    grid-template-columns: 2;
+  }
+  .cartProductDecription {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.cartProductDecription {
+  max-width: 518px;
 }
 
 .cartProductImage img {

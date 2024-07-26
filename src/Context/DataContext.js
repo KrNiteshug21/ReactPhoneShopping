@@ -13,6 +13,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const newPhones = data;
     setPhones(newPhones);
+    setCartItems(JSON.parse(localStorage.getItem("cartItems")) || []);
   }, []);
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export const DataProvider = ({ children }) => {
     } else {
       setTotalCartPrice(0);
     }
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const handlePriceFilter = (id) => {
@@ -51,6 +53,7 @@ export const DataProvider = ({ children }) => {
         var newCartItems = cartItems.slice(0, cartItems.length);
         newCartItems.push(phoneObj);
         setCartItems(newCartItems);
+        localStorage.setItem("cartItems", JSON.stringify(newCartItems));
         console.log(cartItems);
       }
     },
@@ -63,6 +66,7 @@ export const DataProvider = ({ children }) => {
         (cartItem) => cartItem.id !== phoneObj.id
       );
       setCartItems(newCartItems);
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
       console.log(cartItems);
     },
     [cartItems]
